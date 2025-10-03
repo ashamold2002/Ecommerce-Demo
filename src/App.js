@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Routes, Route } from 'react-router-dom';
+import ProductList from './components/ProductList';
+import Cart from './components/Cart';
+import Checkout from './components/Checkout';
+import Success from './components/Success';
+import Navbar from './components/Navbar';
 
-function App() {
+export default function App() {
   return (
-    <div className="text-center">
-      <header className="bg-gray-800 text-white flex flex-col items-center justify-center min-h-screen text-3xl">
-        <img src={logo} className="pointer-events-none h-40 animate-spin" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="text-blue-400"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="container mx-auto px-4 py-8 flex-1">
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/success" element={<Success />} />
+        </Routes>
+      </main>
+      <footer className="bg-white border-t py-4 text-center text-sm">
+        © {new Date().getFullYear()} My E-commerce Demo
+      </footer>
     </div>
   );
 }
-
-export default App;
